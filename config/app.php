@@ -78,11 +78,12 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'ja_JP'),
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'ja_JP'),
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    // Fakerが作るランダムな値を
+    'faker_locale' => env('APP_FAKER_LOCALE', 'ja_JP'),
 
     /*
     |--------------------------------------------------------------------------
