@@ -15,17 +15,27 @@ Route::get('/', function () {
 
 // /hello にアクセスしたとき、HelloController の index を呼び出す
 Route::get('/hello', [HelloController::class, 'index']);
+
+
 // ProductController
 Route::get('/products',[ProductController::class, 'index']);
-// ProductControllerクラスのshowメソッドを使う
+
 Route::get('/products/{id}',[ProductController::class, 'show']);
-// VendorControllerクラスのshowメソッドを呼び出す
+
+
+// VendorController
+// さっきのルーティングだったら{id}をコードの上にしてしまったら、こっちのshowメソッドがルーティングをしてしまうので
+// 最後に{ id }のあるパスのルーティングを記述する
+Route::get('/vendors/create', [VendorController::class, 'create']);
+
+Route::post('/vendors/store',[VendorController::class, 'store'])->name('vendors.store');
+
 Route::get('/vendors/{id}', [VendorController::class, 'show']);
-// RequestControllerクラスのcreateメソッドを呼び出す
+
+// RequestController
 Route::get('/requests/create', [RequestController::class, 'create']);
-// RequestControllerクラスのconfirmメソッドを呼び出す
-// このname関数はcreateメソッドでの実装でルーティングするビューでrouteヘルパ関数を使ったときにrequests.confirmという引数で
-// POSTメソッドを送り、その際にこ
+
 Route::post('/requests/confirm', [RequestController::class, 'confirm'])->name('requests.confirm');
-// ResponseControllerクラスのindexメソッドを使う
+
+// ResponseController
 Route::get('/responses', [ResponseController::class, 'index']);
