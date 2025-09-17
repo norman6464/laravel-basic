@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +21,11 @@ Route::get('/products',[ProductController::class, 'index']);
 Route::get('/products/{id}',[ProductController::class, 'show']);
 // VendorControllerクラスのshowメソッドを呼び出す
 Route::get('/vendors/{id}', [VendorController::class, 'show']);
+// RequestControllerクラスのcreateメソッドを呼び出す
+Route::get('/requests/create', [RequestController::class, 'create']);
+// RequestControllerクラスのconfirmメソッドを呼び出す
+// このname関数はcreateメソッドでの実装でルーティングするビューでrouteヘルパ関数を使ったときにrequests.confirmという引数で
+// POSTメソッドを送り、その際にこ
+Route::post('/requests/confirm', [RequestController::class, 'confirm'])->name('requests.confirm');
+// ResponseControllerクラスのindexメソッドを使う
+Route::get('/responses', [ResponseController::class, 'index']);
