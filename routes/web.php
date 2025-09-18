@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 // ルーティングを設定するコントローラを宣言する
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\SignInController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,10 @@ Route::get('/hello', [HelloController::class, 'index']);
 
 // ProductController
 Route::get('/products',[ProductController::class, 'index']);
+
+Route::get('/products/create', [ProductController::class, 'create']);
+
+Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
 
 Route::get('/products/{id}',[ProductController::class, 'show']);
 
@@ -39,3 +44,8 @@ Route::post('/requests/confirm', [RequestController::class, 'confirm'])->name('r
 
 // ResponseController
 Route::get('/responses', [ResponseController::class, 'index']);
+
+// SignInController
+Route::get('/sign-in',[SignInController::class, 'create']);
+
+Route::post('sign-in', [SignInController::class, 'store'])->name('sign-in.store');
