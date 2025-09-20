@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class ProductStoreRequest extends FormRequest
 
 // フォームリクエストを使用することでコントローラークラスの肥大化を防止ができる
-// そしてrulesメソッドのreturnには連想配列カラム名、ルール
+// そしてrulesメソッドのreturnには連想配列bladeのname属性、ルール
 // authorizeメソッドで認証、認可でコントローラーのアクションが実行される前に必要な権限があるのかを確かる
 
 {
@@ -29,7 +29,8 @@ class ProductStoreRequest extends FormRequest
         return [
             'product_name' => 'required|max:255',
             'price' => 'required|integer|min:1',
-            'vendor_code' => 'exists:vendors,vendor_code'
+            'vendor_code' => 'exists:vendors,vendor_code',
+            'image' => 'image|max:2048'
         ];
     }
 }

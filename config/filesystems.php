@@ -32,6 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
+            // ストレージの保存先のパスはstorageフォルダがルートになる
             'root' => storage_path('app/private'),
             'serve' => true,
             'throw' => false,
