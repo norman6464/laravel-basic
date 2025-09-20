@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProductAddedEvent;
 use App\Http\Requests\ProductStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,6 +56,8 @@ class ProductController extends Controller
         }
         
         $product->save();
+        
+        event(new ProductAddedEvent($product));
 
         // リダイレクトさせる
         return redirect("/products/{$product->id}");
